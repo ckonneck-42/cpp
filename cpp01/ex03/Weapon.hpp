@@ -10,6 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef WEAPON_HPP
+#define WEAPON_HPP
+
 #include <string>
 #include <iostream>
 #include <iomanip>
@@ -21,7 +24,9 @@ class Weapon
 	public:
 	Weapon();
 	Weapon(const std::string &type);
-	void getType();
+	std::string getType();
 	Weapon& setType(const std::string &type);
 	~Weapon();
 };
+
+#endif

@@ -11,3 +11,16 @@
 /* ************************************************************************** */
 
 #include "HumanA.hpp"
+
+HumanA::HumanA(const std::string &name, Weapon &weapon_Name)
+    : name(name), weapon_Name(weapon_Name) {};
+
+void HumanA::attack()
+{
+    std::cout << this->name << " attacks with " << this->weapon_Name.getType() << std::endl;
+}
+
+HumanA::~HumanA()
+{
+
+}

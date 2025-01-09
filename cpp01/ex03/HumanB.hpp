@@ -10,18 +10,24 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#ifndef HUMANB_HPP
+#define HUMANB_HPP
+
 #include <string>
 #include <iostream>
 #include <iomanip>
+#include "Weapon.hpp"
 
 class HumanB
 {
 	private:
-	std::string type;
+	std::string name;
+	Weapon *weapon_Name;
 	public:
-	HumanB();
-	HumanB(const std::string &type);
-	void getType();
-	HumanB& setType(const std::string &type);
+	HumanB(const std::string &name);
+	void setWeapon(Weapon &weapon_Name);
+	void attack();
 	~HumanB();
 };
+
+#endif
