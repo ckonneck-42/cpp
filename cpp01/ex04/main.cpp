@@ -1,15 +1,24 @@
 #include <string>
-#include <iomanip>
 #include <iostream>
 #include <fstream>
+#include <sstream>
 
-int main (int argc, char **argv)// put argv argc for filename etc
+
+std::string replace(std::string buffer, std::string thingtofind, std::string replacement, unsigned int start)
 {
-	if(argc == 4)
+	start = buffer.find(thingtofind);
+	while (start != std::string::npos && start + thingtofind.size() <= buffer.size())
 	{
-		std::cout << "valid" << std::endl;
+		buffer.erase(start, thingtofind.size());
+		buffer.insert(start, replacement);
+		start = buffer.find(thingtofind, start + replacement.size());
 	}
-	else
+	return(buffer);
+}
+
+int main (int argc, char **argv)
+{
+	if(argc != 4)
 	{
 		std::cout << "usage: ./replace filename char_to_replace replacement" << std::endl;
 		return(1);
@@ -23,44 +32,21 @@ int main (int argc, char **argv)// put argv argc for filename etc
 	std::string buffer;
 	std::string thingtofind = argv[2];
 	std::string replacement = argv[3];
-
-	//if argv is exactly 1 char long, invoke the char replacement, if not, go for swap
-	//do swap, if swapped, do the loop from the start
-
-	if(thingtofind.size() == 1)
+	unsigned int start = 0;
+	std::ostringstream newfile_stream;
+	newfile_stream << argv[1] << ".replacement";
+	std::string newfile = newfile_stream.str();
+	std::ofstream replacementfile(newfile.c_str());
+	if (!replacementfile.is_open())
 	{
-		while(std::getline(file, buffer))
-		{
-			for (unsigned int i = 0; i < buffer.size(); i++)
-			{
-				if (buffer[i] == argv[2][0])
-				{
-					buffer[i] = argv[3][0];
-				}
-			}
-		}
+		std::cout << "couldn't open replacementfile: " << newfile <<std::endl;
+		return(1);
 	}
-	else
+	while(std::getline(file, buffer))
 	{
-		//string::erase , string::insert
+		buffer = replace(buffer, thingtofind, replacement, start);
+		replacementfile << buffer << std::endl;
 	}
-		std::cout << "more";
-
-		// if (buffer.find(argv[2][0]) != std::string::npos)
-		// {
-		// 	std::cout << "found " << argv[2][0] << std::endl;
-
-		// }
-		// else
-		// {
-		// 	std::cout << "didn't find " << argv[2][0] << std::endl;
-		// }
-	std::cout << buffer << std::endl;
-	// std::string one ("aaaabacdegaaaa");
-	// std::string two;
-
-	// std::cout << "before the swap: " << one << std::endl;
-
-
-	// std::cout << "after the swap: " << one << std::endl;
+	file.close();
+	replacementfile.close();
 }

@@ -1,33 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckonneck <ckonneck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 13:53:28 by ckonneck          #+#    #+#             */
-/*   Updated: 2025/01/15 12:38:50 by ckonneck         ###   ########.fr       */
+/*   Created: 2025/01/14 14:22:37 by ckonneck          #+#    #+#             */
+/*   Updated: 2025/01/15 14:13:42 by ckonneck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
-
-#include <string>
-#include <iostream>
-#include <iomanip>
-
-class Zombie
+#include "harl.hpp"
+int main(void)
 {
-	private:
-	std::string name;
-	public:
-	Zombie();
-	void announce(void);
-	Zombie(std::string name);
-	~Zombie();
-};
-
-Zombie* zombieHorde(int N, std::string name);
-
-#endif
+	harl h;
+	std::string level;
+	std::cout << "Enter a level \ndebug = 1\ninfo= 2\nwarning = 3\nerror = 4\n>";
+    std::getline(std::cin, level);
+	h.complain(level);
+}

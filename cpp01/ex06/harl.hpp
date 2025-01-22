@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   harl.hpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckonneck <ckonneck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 13:53:28 by ckonneck          #+#    #+#             */
-/*   Updated: 2025/01/15 12:38:50 by ckonneck         ###   ########.fr       */
+/*   Created: 2025/01/14 15:47:40 by ckonneck          #+#    #+#             */
+/*   Updated: 2025/01/14 16:46:35 by ckonneck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
 
+#ifndef HARL_HPP
+#define HARL_HPP
 #include <string>
 #include <iostream>
-#include <iomanip>
 
-class Zombie
-{
-	private:
-	std::string name;
-	public:
-	Zombie();
-	void announce(void);
-	Zombie(std::string name);
-	~Zombie();
-};
 
-Zombie* zombieHorde(int N, std::string name);
+void complain(int logLevel);
+int getLogLevel(const std::string &level);
 
 #endif

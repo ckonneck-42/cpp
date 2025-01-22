@@ -6,7 +6,7 @@
 /*   By: ckonneck <ckonneck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/07 13:53:28 by ckonneck          #+#    #+#             */
-/*   Updated: 2025/01/07 14:01:06 by ckonneck         ###   ########.fr       */
+/*   Updated: 2025/01/17 16:42:02 by ckonneck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,9 @@
 
 class Zombie
 {
-	private:
+private:
 	std::string name;
-	public:
+public:
 	void announce(void);
 	Zombie(std::string name);
 	~Zombie();

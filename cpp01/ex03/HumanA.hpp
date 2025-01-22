@@ -6,7 +6,7 @@
 /*   By: ckonneck <ckonneck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 13:16:40 by ckonneck          #+#    #+#             */
-/*   Updated: 2025/01/08 13:23:28 by ckonneck         ###   ########.fr       */
+/*   Updated: 2025/01/17 13:12:12 by ckonneck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,12 @@
 class HumanA
 {
 	private:
-    std::string name;
-    Weapon &weapon_Name;
+		std::string name;
+		Weapon &weapon_Name;
 	public:
-	HumanA(const std::string &name, Weapon &weapon_Name);
-	void attack();
-	~HumanA();
+		HumanA(const std::string &name, Weapon &weapon_Name);
+		void attack();
+		~HumanA();
 
 };
 

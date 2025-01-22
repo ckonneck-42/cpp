@@ -1,33 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   Zombie.hpp                                         :+:      :+:    :+:   */
+/*   main.cpp                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ckonneck <ckonneck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/07 13:53:28 by ckonneck          #+#    #+#             */
-/*   Updated: 2025/01/15 12:38:50 by ckonneck         ###   ########.fr       */
+/*   Created: 2025/01/14 15:47:38 by ckonneck          #+#    #+#             */
+/*   Updated: 2025/01/17 14:38:37 by ckonneck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef ZOMBIE_HPP
-#define ZOMBIE_HPP
+#include "harl.hpp"
 
-#include <string>
-#include <iostream>
-#include <iomanip>
-
-class Zombie
+int main(int argc, char **argv)
 {
-	private:
-	std::string name;
-	public:
-	Zombie();
-	void announce(void);
-	Zombie(std::string name);
-	~Zombie();
-};
+	std::string level;
+	if (argc != 2)
+	{
+		std::cout << "usage: ./harlFilter \"level\" (debug, info, error or warning)" << std::endl;
+		return(1);
+	}
+	level = argv[1];
+	int logLevel = getLogLevel(level);
+	complain(logLevel);
+}
 
-Zombie* zombieHorde(int N, std::string name);
-
-#endif

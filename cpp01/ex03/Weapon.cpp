@@ -6,7 +6,7 @@
 /*   By: ckonneck <ckonneck@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 13:16:49 by ckonneck          #+#    #+#             */
-/*   Updated: 2025/01/08 15:48:00 by ckonneck         ###   ########.fr       */
+/*   Updated: 2025/01/17 14:31:53 by ckonneck         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@ Weapon& Weapon::setType(const std::string &type)
     return *this;
 }
 
-std::string Weapon::getType()
+const std::string &Weapon::getType() const
 {
     return(type);
 }
 
 Weapon::Weapon() : type("") {}
 
-Weapon::Weapon(const std::string &type) : type(type) {}
+Weapon::Weapon(const std::string &type) : type(type) 
+{
+    
+}
 
 Weapon::~Weapon()
 {
