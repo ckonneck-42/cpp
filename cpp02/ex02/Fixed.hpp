@@ -17,6 +17,7 @@ class Fixed
         Fixed(const float input);
         float toFloat(void) const;
         int toInt(void) const;
+
         bool operator>(Fixed fixed) const;
         bool operator<(Fixed fixed) const;
         bool operator>=(Fixed fixed) const;
@@ -45,5 +46,5 @@ class Fixed
         static const int fractionalBits = 8;
 };
 
-std::ostream    &operator<<(std::ostream &o, Fixed const &fixed);
+std::ostream    &operator<<(std::ostream &os, Fixed const &fixed);
 #endif

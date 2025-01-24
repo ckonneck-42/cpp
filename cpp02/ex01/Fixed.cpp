@@ -6,7 +6,6 @@ std::ostream& operator<<(std::ostream& os, Fixed const &fixed) {
 }
 
 
-
 Fixed::Fixed() : value(0)
 {
 	std::cout << "Default Constructor called" << std::endl;
