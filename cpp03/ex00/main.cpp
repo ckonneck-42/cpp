@@ -4,14 +4,11 @@ int main(void)
 {
 	try
 	{
-		ClapTrap example("James");
-		example.setEP(5);
-		example.setHP(25);
-		example.setAD(2);
+		ClapTrap example("James", 10, 10, 0);
 		example.status();
 		std::string target = "Bob";
 		example.attack(target);
-		example.takeDamage(52);
+		example.takeDamage(3);
 		example.beRepaired(12);
 		example.status();
 	}
