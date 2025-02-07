@@ -7,12 +7,6 @@ Cat::Cat()
 }
 
 
-Cat::Cat(const std::string &_name) : Animal()
-{
-	std::cout << "Cat name constructor called" << std::endl;
-	this->name = _name;
-}
-
 Cat::Cat(const Cat &other) : Animal()
 {
     std::cout << "copy constructor called" << std::endl;

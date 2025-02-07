@@ -2,18 +2,19 @@
 #define Animal_HPP
 
 #include <iostream>
-
+#include "brain.hpp"
 class Animal
 {
 	public:
 		Animal();
 		Animal(const std::string &_name);
-		~Animal();
+		virtual ~Animal();
 		Animal(const Animal &other);
 		Animal &operator=(const Animal &other);
-		void makeSound();
-		std::string getType();
-
+		virtual void makeSound() const;
+		std::string getType() const;
+		virtual void setIdea(const std::string &idea, int n) = 0;
+		virtual void showIdea(int n) const = 0;
 	protected:
 		std::string type;
 		std::string name;

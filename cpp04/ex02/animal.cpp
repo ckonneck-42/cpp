@@ -1,4 +1,4 @@
-#include "dog.hpp"
+#include "animal.hpp"
 
 Animal::Animal()
 {
@@ -14,12 +14,13 @@ Animal::Animal(const std::string &_name)
 
 Animal::Animal(const Animal &other)
 {
-    std::cout << "copy constructor called" << std::endl;
+    std::cout << "animal copy constructor called" << std::endl;
     *this = other;
 }
 
 Animal &Animal::operator=(const Animal &other)
 {
+	std::cout << "animal copy operator called" << std::endl;
     if (this == &other)
         return (*this);
     // this->_name = other._name;
@@ -31,7 +32,7 @@ Animal::~Animal()
 	std::cout << "Animal destructor called" << std::endl;
 }
 
-void Animal::makeSound()
+void Animal::makeSound() const
 {
 	std::string _type = this->getType();
 	if (_type == "Dog")
@@ -42,7 +43,8 @@ void Animal::makeSound()
 		std::cout << "OH GOD WHAT AM I KILL ME WHAT SOUND DO I MAKE" << std::endl;
 }
 
-std::string Animal::getType()
+
+std::string Animal::getType() const
 {
 	return(this->type);
 }

@@ -7,11 +7,6 @@ Dog::Dog()
 }
 
 
-Dog::Dog(const std::string &_name) : Animal()
-{
-	std::cout << "Dog name constructor called" << std::endl;
-    this->name = _name;
-}
 
 Dog::Dog(const Dog &other) : Animal()
 {

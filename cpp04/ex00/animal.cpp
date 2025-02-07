@@ -6,21 +6,15 @@ Animal::Animal()
 }
 
 
-Animal::Animal(const std::string &_name)
-{
-	std::cout << "Animal name constructor called" << std::endl;
-	this->name = _name;
-}
-
 Animal::Animal(const Animal &other)
 {
-    std::cout << "animal copy constructor called" << std::endl;
+    std::cout << "copy constructor called" << std::endl;
     *this = other;
 }
 
 Animal &Animal::operator=(const Animal &other)
 {
-	std::cout << "animal copy operator called" << std::endl;
+	std::cout << "copy operator called" << std::endl;
     if (this == &other)
         return (*this);
     // this->_name = other._name;
@@ -42,7 +36,6 @@ void Animal::makeSound() const
 	else
 		std::cout << "OH GOD WHAT AM I KILL ME WHAT SOUND DO I MAKE" << std::endl;
 }
-
 
 std::string Animal::getType() const
 {

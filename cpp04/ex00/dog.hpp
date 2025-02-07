@@ -7,8 +7,7 @@ class Dog : public Animal
 {
 	public:
 		Dog();
-		Dog(const std::string &_name);
-		~Dog();
+		virtual ~Dog();
 		Dog(const Dog &other);
 		Dog &operator=(const Dog &other);
 
