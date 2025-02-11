@@ -10,13 +10,10 @@ class Cure : public AMateria
 		Cure(const Cure &other);
 		Cure &operator=(const Cure &other);
 		void use(ICharacter& target);
-
-	private:
-		std::string _type;
-
+		virtual AMateria *clone() const;
 };
 
-
+// std::ostream    &operator<<(std::ostream &os, ICharacter const &target);
 
 
 #endif

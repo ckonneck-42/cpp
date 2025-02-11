@@ -1,7 +1,7 @@
 NAME = interface
 CC = c++
-CFLAGS = -Wall -Wextra -Werror -std=c++98
-SRCS = main.cpp AMateria.cpp
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -g
+SRCS =  AMateria.cpp Cure.cpp Ice.cpp Character.cpp main.cpp
 OBJS = $(SRCS:.cpp=.o)
 
 all: $(NAME)
