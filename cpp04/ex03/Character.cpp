@@ -17,15 +17,20 @@ void Character::initialize()
 {
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
-	for (int i = 0; i < 9; i++) // This should be 9 if ground has 9 slots
+	for (int i = 0; i < 9; i++)
 		this->_ground[i] = NULL;
+}
+
+
+std::string const &Character::getName() const
+{
+    return (this->_name);
 }
 
 Character::Character(const Character &other) : _name(other._name)
 {
     std::cout << "Character copy constructor called" << std::endl;
-    // this->_amaterial = new AMateria(*other._amaterial);  // Deep copy should copy all existing materias to the new one
-	for (int i = 0; i < 4; i++)
+    for (int i = 0; i < 4; i++)
     {
         if (other._inventory[i])
             this->_inventory[i] = other._inventory[i]->clone();
@@ -43,40 +48,22 @@ Character::Character(const Character &other) : _name(other._name)
     }
 }
 
-std::string const &Character::getName() const
-{
-	return (this->_name);
-}
-
-// Cat &Cat::operator=(const Cat &other)
-// {
-//     if (this == &other)
-//         return (*this);
-
-//     Animal::operator=(other);
-//     delete this->_brain;
-//     this->_brain = new Brain(*other._brain);  // Deep copy of Brain
-
-//     return (*this);
-// }
-
 Character &Character::operator=(const Character &other)
 {
-	std::cout << "Character operator copy constructor called" << std::endl;
+    std::cout << "Character operator copy constructor called" << std::endl;
     if (this == &other)
-	{
+    {
         return *this;
+    }
 
-	}
-
-	for (int i = 0; i < 4; i++)
-	{
-		if (this->_inventory[i])
-		{
-			std::cout << "all materias that " << this->_name << " had, have been deleted and overwritten." << std::endl;
-			break;
-		}
-	}
+    for (int i = 0; i < 4; i++)
+    {
+        if (this->_inventory[i])
+        {
+            std::cout << "all materias that " << this->_name << " had, have been deleted and overwritten." << std::endl;
+            break;
+        }
+    }
     // Clean up existing memory
     for (int i = 0; i < 4; i++)
     {
@@ -86,7 +73,6 @@ Character &Character::operator=(const Character &other)
             this->_inventory[i] = NULL;
         }
     }
-
     for (int i = 0; i < 9; i++)
     {
         if (this->_ground[i])
@@ -122,6 +108,10 @@ Character &Character::operator=(const Character &other)
 
 void Character::equip(AMateria* m)
 {
+    // so technically to rule out any chance of segfaults in the main
+    // i'd have to crosscheck every materia that is being tried to equip
+    // with all available characters, and see if others have ownership of those items
+    //already.
 	if (!m) return;
 	for (int n = 0; n < 9; n++)
 	{
@@ -209,7 +199,7 @@ Character::~Character()
     {
         if (this->_inventory[i]) // Only delete if it's not NULL
         {
-			std::cout << "inventory nr: "<< i << " " << this->_inventory[i]->getType() << std::endl;
+			std::cout << "debug inventory nr: "<< i << "from " << this->_name + " :" << this->_inventory[i]->getType() << std::endl;
             delete this->_inventory[i];
             this->_inventory[i] = NULL; // Avoid dangling pointers
         }

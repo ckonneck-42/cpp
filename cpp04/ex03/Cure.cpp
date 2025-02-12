@@ -9,7 +9,6 @@ Cure::Cure() : AMateria("cure")
 Cure::Cure(const Cure &other) : AMateria(other)
 {
     std::cout << "Cure copy constructor called" << std::endl;
-    // this. //UNFINISHED
 }
 
 Cure &Cure::operator=(const Cure &other)
@@ -54,10 +53,5 @@ Cure::~Cure()
 }
 
 AMateria* Cure::clone() const {
-    return new Cure(*this); // Creates a new copy of the current object
+    return new Cure(*this);
 }
-
-// std::ostream& operator<<(std::ostream& os, ICharacter const &target) {
-//     os << target._name();
-//     return os;
-// }

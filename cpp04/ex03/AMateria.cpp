@@ -28,7 +28,7 @@ void AMateria::use(ICharacter& target) {
 AMateria::AMateria(const AMateria &other)
 {
     std::cout << "AMateria copy constructor called" << std::endl;
-    this->_type = other._type;  // Copy the type from the other AMateria
+    this->_type = other._type;
 }
 
 AMateria &AMateria::operator=(const AMateria &other)
@@ -36,6 +36,6 @@ AMateria &AMateria::operator=(const AMateria &other)
 	std::cout << "copy operator called" << std::endl;
     if (this == &other)
         return (*this);
-    // this->_name = other._name;
+    this->_type = other._type;
     return (*this);
 }
