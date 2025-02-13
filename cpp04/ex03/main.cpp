@@ -8,25 +8,25 @@
 
 //default case from subject
 
-// int main()
-// {
-// 	IMateriaSource* src = new MateriaSource();
-// 	src->learnMateria(new Ice());
-// 	src->learnMateria(new Cure());
-// 	ICharacter* me = new Character("me");
-// 	AMateria* tmp;
-// 	tmp = src->createMateria("ice");
-// 	me->equip(tmp);
-// 	tmp = src->createMateria("cure");
-// 	me->equip(tmp);
-// 	ICharacter* bob = new Character("bob");
-// 	me->use(0, *bob);
-// 	me->use(1, *bob);
-// 	delete bob;
-// 	delete me;
-// 	delete src;
-// 	return 0;
-// }
+int main()
+{
+	IMateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
+	ICharacter* me = new Character("me");
+	AMateria* tmp;
+	tmp = src->createMateria("ice");
+	me->equip(tmp);
+	tmp = src->createMateria("cure");
+	me->equip(tmp);
+	ICharacter* bob = new Character("bob");
+	me->use(0, *bob);
+	me->use(1, *bob);
+	delete bob;
+	delete me;
+	delete src;
+	return 0;
+}
 
 
 
@@ -118,24 +118,24 @@
 // }
 
 //showing off copying
-int main()
-{
-	AMateria *temp = new Ice();
-	std::cout << "temp is " << temp->getType() << std::endl;
-	ICharacter* me = new Character("me");
-	AMateria *cu = new Cure();
-	Character* fiesta = new Character("fiesta");
-	Character* testa = new Character("puu");
-	testa->equip(cu);
-	fiesta->equip(temp);
-	testa->use(0, *testa);
-	*testa = *fiesta;
-	testa->use(0, *testa);
-	fiesta->use(0, *testa);
-	delete testa;
-	delete me;
-	delete fiesta;
-}
+// int main()
+// {
+// 	AMateria *temp = new Ice();
+// 	std::cout << "temp is " << temp->getType() << std::endl;
+// 	ICharacter* me = new Character("me");
+// 	AMateria *cu = new Cure();
+// 	Character* fiesta = new Character("fiesta");
+// 	Character* testa = new Character("puu");
+// 	testa->equip(cu);
+// 	fiesta->equip(temp);
+// 	testa->use(0, *testa);
+// 	*testa = *fiesta;
+// 	testa->use(0, *testa);
+// 	fiesta->use(0, *testa);
+// 	delete testa;
+// 	delete me;
+// 	delete fiesta;
+// }
 
 
 

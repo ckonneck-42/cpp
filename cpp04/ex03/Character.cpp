@@ -38,7 +38,6 @@ Character::Character(const Character &other) : _name(other._name)
             this->_inventory[i] = NULL;
     }
 
-    // Deep copy ground
     for (int i = 0; i < 9; i++)
     {
         if (other._ground[i])
@@ -82,10 +81,8 @@ Character &Character::operator=(const Character &other)
         }
     }
 
-    // Copy name
     this->_name = other._name;
 
-    // Deep copy inventory
     for (int i = 0; i < 4; i++)
     {
         if (other._inventory[i])
@@ -94,7 +91,6 @@ Character &Character::operator=(const Character &other)
             this->_inventory[i] = NULL;
     }
 
-    // Deep copy ground
     for (int i = 0; i < 9; i++)
     {
         if (other._ground[i])

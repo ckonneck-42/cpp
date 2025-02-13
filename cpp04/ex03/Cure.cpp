@@ -20,27 +20,6 @@ Cure &Cure::operator=(const Cure &other)
     return (*this);
 }
 
-
-
-// Dog::Dog(const Dog &other) : Animal(other)  // Copy base class
-// {
-//     std::cout << "Dog copy constructor called" << std::endl;
-//     this->_brain = new Brain(*other._brain);  // Deep copy
-// }
-
-// Dog &Dog::operator=(const Dog &other)
-// {
-//     if (this == &other)
-//         return (*this);
-
-//     Animal::operator=(other);
-
-//     delete this->_brain;  // Prevent memory leaks
-//     this->_brain = new Brain(*other._brain);  // Deep copy of Brain
-
-//     return (*this);
-// }
-
 void Cure::use(ICharacter& target)
 {
 	std::cout << "* heals " << target.getName() << "'s Wounds" << std::endl;
