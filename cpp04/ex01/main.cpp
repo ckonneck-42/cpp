@@ -15,11 +15,19 @@
 // }
 
 
+// int main()
+// {
+//     Animal *leak = new Cat();
+//     delete leak;
+//     return 0;
+// }
+
 
 int main()
 {
     Animal* horde[6];
 
+    // Animal *ness = new Animal();
     for (int i = 0; i < 3; i++)
 	{
         horde[i] = new Cat("nyanko");
@@ -36,8 +44,13 @@ int main()
 	{
         horde[i]->showIdea(i);
     }
+	for (int i = 0; i < 6; i++)
+	{
+       delete horde[i];
+    }
 	std::cout << std::endl;
 	Cat original("Whiskers");
+    original.makeSound();
 	std::cout << "setting the idea " << std::endl;
     original.setIdea("I love fish!", 0);
     std::cout << "set the idea " << std::endl;
@@ -49,7 +62,7 @@ int main()
     
     std::cout << "Copy Cat's idea at index 0: ";
     copyCat.showIdea(0);
-	std::cout <<"expected empty ^."<< std::endl;
+	std::cout <<"both now have the same idea ^."<< std::endl;
     // Modify copy's brain
 	std::cout <<"now modifying the copy."<< std::endl;
     copyCat.setIdea("I hate fish!", 0);
@@ -62,10 +75,6 @@ int main()
     copyCat.showIdea(0);
 	std::cout << std::endl;
 
-	for (int i = 0; i < 6; i++)
-	{
-       delete horde[i];
-    }
 
 return 0;
 }

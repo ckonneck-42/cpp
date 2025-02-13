@@ -19,15 +19,24 @@ void Brain::addIdeaToBrain(const std::string &_idea, int n)
 Brain::Brain(const Brain &other)
 {
     std::cout << "Brain copy constructor called" << std::endl;
-    *this = other;
+
+    for (int i = 0; i < 100; i++)
+    {
+        ideas[i] = other.ideas[i];
+    }
 }
 
 Brain &Brain::operator=(const Brain &other)
 {
     if (this == &other)
         return (*this);
+
+    for (int i = 0; i < 100; i++)
+        ideas[i] = other.ideas[i];
+
     return (*this);
 }
+
 
 Brain::~Brain()
 {

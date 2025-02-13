@@ -9,7 +9,7 @@ class Brain
 {
 	public:
 		Brain();
-		virtual ~Brain();
+		~Brain();
 		Brain(const Brain &other);
 		Brain &operator=(const Brain &other);
 		void showIdea(int n);

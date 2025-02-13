@@ -6,7 +6,6 @@ WrongCat::WrongCat()
 	this->type = "WrongCat";
 }
 
-
 WrongCat::WrongCat(const std::string &_name) : WrongAnimal()
 {
 	std::cout << "WrongCat name constructor called" << std::endl;
@@ -23,8 +22,13 @@ WrongCat &WrongCat::operator=(const WrongCat &other)
 {
     if (this == &other)
         return (*this);
-    // this->_name = other._name;
+    this->type = other.type;
     return (*this);
+}
+
+void WrongCat::makeSound() const
+{
+	std::cout << "If you see this, that means i am a wrongcat." << std::endl;
 }
 
 WrongCat::~WrongCat()

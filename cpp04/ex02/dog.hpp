@@ -8,11 +8,12 @@ class Dog : public Animal
 	public:
 		Dog();
 		Dog(const std::string &_name);
-		virtual ~Dog();
+		~Dog();
 		Dog(const Dog &other);
 		Dog &operator=(const Dog &other);
 		void setIdea(const std::string &_idea, int n);
 		void showIdea(int n) const;
+		void makeSound() const;
 	private:
 		Brain* _brain;
 };

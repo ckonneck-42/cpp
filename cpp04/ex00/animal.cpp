@@ -6,10 +6,9 @@ Animal::Animal()
 }
 
 
-Animal::Animal(const Animal &other)
+Animal::Animal(const Animal &other) : type(other.type)
 {
     std::cout << "copy constructor called" << std::endl;
-    *this = other;
 }
 
 Animal &Animal::operator=(const Animal &other)
@@ -17,7 +16,7 @@ Animal &Animal::operator=(const Animal &other)
 	std::cout << "copy operator called" << std::endl;
     if (this == &other)
         return (*this);
-    // this->_name = other._name;
+    this->type = other.type;
     return (*this);
 }
 
@@ -28,13 +27,7 @@ Animal::~Animal()
 
 void Animal::makeSound() const
 {
-	std::string _type = this->getType();
-	if (_type == "Dog")
-		std::cout << "woof" << std::endl;
-	else if (_type == "Cat")
-		std::cout << "meow" << std::endl;
-	else
-		std::cout << "OH GOD WHAT AM I KILL ME WHAT SOUND DO I MAKE" << std::endl;
+	std::cout << "OH GOD WHAT AM I KILL ME WHAT SOUND DO I MAKE" << std::endl;
 }
 
 std::string Animal::getType() const

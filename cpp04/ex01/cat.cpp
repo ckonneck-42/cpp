@@ -25,10 +25,16 @@ Cat &Cat::operator=(const Cat &other)
         return (*this);
 
     Animal::operator=(other);
-    delete this->_brain;
+    if (this->_brain)
+        delete this->_brain;
     this->_brain = new Brain(*other._brain);  // Deep copy of Brain
 
     return (*this);
+}
+
+void Cat::makeSound() const
+{
+	std::cout << "meooOOOWWWWHH" << std::endl;
 }
 
 Cat::~Cat()

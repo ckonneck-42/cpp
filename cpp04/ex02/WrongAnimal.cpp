@@ -20,9 +20,13 @@ WrongAnimal::WrongAnimal(const WrongAnimal &other)
 
 WrongAnimal &WrongAnimal::operator=(const WrongAnimal &other)
 {
+	std::cout << "copy operator called" << std::endl;
     if (this == &other)
+	{
         return (*this);
-    // this->_name = other._name;
+	}
+	this->name = other.name;
+    this->type = other.type;
     return (*this);
 }
 

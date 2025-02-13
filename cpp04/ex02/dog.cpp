@@ -27,10 +27,16 @@ Dog &Dog::operator=(const Dog &other)
 
     Animal::operator=(other);
 
-    delete this->_brain;  // Prevent memory leaks
+    if (this->_brain)
+        delete this->_brain;
     this->_brain = new Brain(*other._brain);  // Deep copy of Brain
 
     return (*this);
+}
+
+void Dog::makeSound() const
+{
+	std::cout << "WOOF" << std::endl;
 }
 
 Dog::~Dog()

@@ -10,15 +10,20 @@ Cat::Cat()
 Cat::Cat(const Cat &other) : Animal()
 {
     std::cout << "copy constructor called" << std::endl;
-    *this = other;
+    this->type = other.type;
 }
 
 Cat &Cat::operator=(const Cat &other)
 {
     if (this == &other)
         return (*this);
-    // this->_name = other._name;
+    this->type = other.type;
     return (*this);
+}
+
+void Cat::makeSound() const
+{
+	std::cout << "meooOOOWWWWHH" << std::endl;
 }
 
 Cat::~Cat()
