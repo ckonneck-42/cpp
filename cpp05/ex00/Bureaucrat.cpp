@@ -1,6 +1,6 @@
 #include "Bureaucrat.hpp"
 
-Bureaucrat::Bureaucrat()
+Bureaucrat::Bureaucrat(): _name("Mumei"), _grade(150)
 {
 	std::cout << "standard constructor for Bureaucrat called" << std::endl;
 }
@@ -26,6 +26,21 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "standard destructor for Bureaucrat called" << std::endl;
 }
 
+Bureaucrat::Bureaucrat(const Bureaucrat &other)
+{
+	*this = other;
+}
+
+Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
+{
+	if (this == &other)
+		return *this;
+	this->_name = other._name;
+	this->_grade = other._grade;
+	return *this;
+}
+
+
 const char *Bureaucrat::GradeTooLowException::what() const throw()
 {
 	return ("Exception triggered. Grade too low. Aborting.");
@@ -48,4 +63,22 @@ const std::string &Bureaucrat::getName() const
 int Bureaucrat::getGrade() const
 {
 	return _grade;
+}
+
+void Bureaucrat::incrementGrade()
+{
+	std::cout << "attempting to increment grade" << std::endl;
+	if (this->_grade <= 1)
+		throw(GradeTooHighException());
+	this->_grade--;
+	std::cout << "incremented successfully" << std::endl;
+}
+
+void Bureaucrat::decrementGrade()
+{
+	std::cout << "attempting to decrement grade" << std::endl;
+	if (this->_grade >= 150)
+		throw(GradeTooLowException());
+	this->_grade++;
+	std::cout << "decremented successfully" << std::endl;
 }
