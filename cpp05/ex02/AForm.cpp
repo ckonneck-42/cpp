@@ -1,8 +1,8 @@
-#include "Form.hpp"
+#include "AForm.hpp"
 
-Form::Form() : _name("unnamed"), _isSigned("false"), _gradeRequiredToSign(150), _gradeRequiredToExecute(150) {}
+AForm::AForm() : _name("unnamed"), _isSigned("false"), _gradeRequiredToSign(150), _gradeRequiredToExecute(150) {}
 
-Form::Form(const std::string &name, bool isSigned, const int gradeReqTS, const int gradeReqTE)
+AForm::AForm(const std::string &name, bool isSigned, const int gradeReqTS, const int gradeReqTE)
 	:_name(name), _isSigned(isSigned),_gradeRequiredToSign(gradeReqTS), _gradeRequiredToExecute(gradeReqTE)
 {
 	if(gradeReqTS > 150 || gradeReqTE > 150)
@@ -15,11 +15,11 @@ Form::Form(const std::string &name, bool isSigned, const int gradeReqTS, const i
 	}
 }
 
-Form::Form(const Form &other) : _name(other._name),
+AForm::AForm(const AForm &other) : _name(other._name),
 	_gradeRequiredToSign(other._gradeRequiredToSign),
 	_gradeRequiredToExecute(other._gradeRequiredToExecute){}
 
-Form &Form::operator=(const Form &other)
+AForm &AForm::operator=(const AForm &other)
 {
 	if (this == &other)
 		return *this;
@@ -27,7 +27,12 @@ Form &Form::operator=(const Form &other)
 	return *this;
 }
 
-void Form::beSigned(const Bureaucrat &guy)
+const char *AForm::FormNotSignedException::what() const throw()
+{
+	return ("Exception triggered. Form wasn't signed yet. Aborting.");
+}
+
+void AForm::beSigned(const Bureaucrat &guy)
 {
 	if (guy.getGrade() <= this->_gradeRequiredToSign)
 	{
@@ -41,28 +46,28 @@ void Form::beSigned(const Bureaucrat &guy)
 	}
 }
 
-const std::string &Form::getName() const 
+const std::string &AForm::getName() const 
 {
 	return _name;
 }
-int Form::getGradeReqTE()
+int AForm::getGradeReqTE() const
 {
 	return _gradeRequiredToExecute;
 }
-int Form::getGradeReqTS()
+int AForm::getGradeReqTS() const
 {
 	return _gradeRequiredToSign;
 }
-bool Form::getIfSigned()
+bool AForm::getIfSigned() const
 {
 	return _isSigned;
 }
 
-std::ostream& operator<<(std::ostream& os, Form &paper) {
-    os << "Form " << paper.getName() << ", is it already signed: " << paper.getIfSigned() <<
+std::ostream& operator<<(std::ostream& os, AForm &paper) {
+    os << "AForm " << paper.getName() << ", is it already signed: " << paper.getIfSigned() <<
 	", grade required to sign: " << paper.getGradeReqTS() <<
 	", grade required to execute: " << paper.getGradeReqTE();
     return os;
 }
 
-Form::~Form() {std::cout << "form destructor called" << std::endl;}
+AForm::~AForm() {std::cout << "form destructor called" << std::endl;}

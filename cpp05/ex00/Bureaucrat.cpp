@@ -26,7 +26,7 @@ Bureaucrat::~Bureaucrat()
 	std::cout << "standard destructor for Bureaucrat called" << std::endl;
 }
 
-Bureaucrat::Bureaucrat(const Bureaucrat &other)
+Bureaucrat::Bureaucrat(const Bureaucrat &other) : _name(other._name), _grade(other._grade)
 {
 	*this = other;
 }
@@ -35,7 +35,6 @@ Bureaucrat &Bureaucrat::operator=(const Bureaucrat &other)
 {
 	if (this == &other)
 		return *this;
-	this->_name = other._name;
 	this->_grade = other._grade;
 	return *this;
 }

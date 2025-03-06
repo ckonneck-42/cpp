@@ -25,7 +25,7 @@ class Bureaucrat
 		void decrementGrade();
 		int getGrade() const;
 	private:
-		std::string _name;
+		const std::string _name;
 		int _grade;
 	};
 	

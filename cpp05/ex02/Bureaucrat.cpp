@@ -81,7 +81,7 @@ void Bureaucrat::decrementGrade()
 	std::cout << "decremented successfully" << std::endl;
 }
 
-void Bureaucrat::signForm(Form &paper)
+void Bureaucrat::signForm(AForm &paper)
 {
 	try
 	{
