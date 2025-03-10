@@ -5,7 +5,7 @@
 #include "ShrubberyCreationForm.hpp"
 int main()
 {
-	Bureaucrat *guy = new Bureaucrat("bob", 25);
+	Bureaucrat *guy = new Bureaucrat("bob", 5);
 	PresidentialPardonForm test("billy");
 	RobotomyRequestForm robo("bot");
 	ShrubberyCreationForm shrub("shribbi");
@@ -15,5 +15,6 @@ int main()
 	robo.execute(*guy);
 	test.beSigned(*guy);
 	test.execute(*guy);
+	guy->executeForm(test);
 	delete guy;
 }

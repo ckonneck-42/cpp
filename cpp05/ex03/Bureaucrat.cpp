@@ -92,3 +92,21 @@ void Bureaucrat::signForm(AForm &paper)
 		std::cerr << e.what() << '\n';
 	}
 }
+
+void Bureaucrat::executeForm(AForm const &paper)
+{
+	try
+	{
+		if (this->getGrade() > paper.getGradeReqTE())
+			throw (Bureaucrat::GradeTooLowException());
+		if (paper.getIfSigned() == false)
+			throw (AForm::FormNotSignedException());
+		paper.execute(*this);
+		std::cout << this->_name << " executed form " << paper.getName() << std::endl;
+	}
+	catch(const std::exception& e)
+	{
+		std::cerr << e.what() << '\n';
+		return;
+	}
+}
