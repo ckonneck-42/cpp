@@ -1,7 +1,10 @@
 #include "ScalarConverter.hpp"
 
-int main(int argc, char **argv)
+int main()
 {
-	(void) argc;
-	ScalarConverter::convert(argv[1]);
+	std::cout << "------------------" << std::endl;
+	ScalarConverter::convert(".");
+	std::cout << "------------------" << std::endl;
+	ScalarConverter::convert("");
+	std::cout << "------------------" << std::endl;
 }
