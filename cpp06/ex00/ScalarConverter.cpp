@@ -72,12 +72,24 @@ void ScalarConverter::convert(const std::string &value)
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: " << static_cast<int>(atoi(value.c_str())) << std::endl;
 		std::cout << "float: " << static_cast<float>(atof(value.c_str())) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(atof(value.c_str()));
-		if (pos != std::string::npos)
-			std::cout << ".0";
-		std::cout << std::endl;
+		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << std::endl;
 		return;
 	}
 }
 
 ScalarConverter::ScalarConverter() {std::cout << "this should never be called";}
+
+
+
+//static_cast: The conversion is decided beforehand and is super fast when the program is running.
+// dynamic_cast: The conversion happens during the program’s run,
+// and it has to check things while the program is running, making it slower.
+
+/*
+It’s fast: Since static_cast works during compilation (before the program even runs),
+it doesn't slow things down when the program is running.
+It’s safe: You can only use it to convert types that make sense to convert.
+If you try something silly, like trying to convert an object into a completely unrelated type 
+(e.g., trying to turn an animal into a car), the compiler will stop you and give you an error before you
+even run the program.
+*/
