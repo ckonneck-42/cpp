@@ -1,8 +1,13 @@
 #include "ScalarConverter.hpp"
 #include <cstdlib>
+#include <iomanip>
+#include <limits>
 void ScalarConverter::convert(const std::string &value)
 {
+
+	std::cout << "------------------" << std::endl;
 	std::cout << "VALUE GIVEN: '" << value <<"'" << std::endl;
+	
 	if (value.empty())
 	{
 		std::cout << "char: impossible" << std::endl;
@@ -11,13 +16,22 @@ void ScalarConverter::convert(const std::string &value)
 		std::cout << "double: impossible" << std::endl;
 		return;
 	}
+	std::string::size_type pos = value.find('.');
+	if(pos != std::string::npos)
+	{
+		if (value.find('.', pos + 1) != std::string::npos)
+		{
+			std::cout << "found multiple . ,shorting" << std::endl;
+		}
+	}
 
+	std::cout << std::fixed << std::setprecision(1);
 	if (value.length() == 1)
 	{
 		std::cout << "char: " << value[0] << std::endl;
 		std::cout << "int: " << static_cast<int>(atoi(value.c_str())) << std::endl;
 		std::cout << "float: " << static_cast<float>(atof(value.c_str())) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << ".0" << std::endl;
+		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << std::endl;
 		return;
 	}
 
@@ -26,7 +40,31 @@ void ScalarConverter::convert(const std::string &value)
 		std::cout << "char: '" << static_cast<char>(atoi(value.c_str())) <<"'" << std::endl;
 		std::cout << "int: " << static_cast<int>(atoi(value.c_str())) << std::endl;
 		std::cout << "float: " << static_cast<float>(atof(value.c_str())) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << ".0" << std::endl;
+		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << std::endl;
+		return;
+	}
+	else if (value == "-inff" || value == "+inff" || value == "nanf" || value == "nan" || value == "-inf" || value == "+inf") {
+		std::cout << "char: " << "impossible" << std::endl;
+		std::cout << "int: " << "impossible" << std::endl;
+        std::cout << "float: " << static_cast<float>(atof(value.c_str()));
+		if (value[value.length() - 1] == 'f')
+			std::cout << "f";
+		std::cout << std::endl;
+        std::cout << "double: " <<static_cast<double>(atof(value.c_str())) << std::endl;
+        return;
+    }
+	else if(atof(value.c_str()) > 16777216 || atof(value.c_str()) < -16777216)
+	{
+		std::cout << "char: impossible" << std::endl;
+		if(atof(value.c_str()) > 2147483647 || atof(value.c_str()) < -2147483647)
+			std::cout << "int: impossible" << std::endl;
+		else
+			std::cout << "int: " << static_cast<int>(atoi(value.c_str())) << std::endl;
+		std::cout << "value over max precision float. the following will be with lost precision" << std::endl;
+		std::cout << "float: " << static_cast<float>(atof(value.c_str())) << "f" << std::endl;
+		if(atof(value.c_str()) > 9007199254740992 || atof(value.c_str()) < -9007199254740992)
+			std::cout << "value over max precision double. the following will be with lost precision" << std::endl;
+		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << std::endl;
 		return;
 	}
 	else
@@ -34,23 +72,12 @@ void ScalarConverter::convert(const std::string &value)
 		std::cout << "char: impossible" << std::endl;
 		std::cout << "int: " << static_cast<int>(atoi(value.c_str())) << std::endl;
 		std::cout << "float: " << static_cast<float>(atof(value.c_str())) << "f" << std::endl;
-		std::cout << "double: " << static_cast<double>(atof(value.c_str())) << ".0" << std::endl;//problematic if input is .something
+		std::cout << "double: " << static_cast<double>(atof(value.c_str()));
+		if (pos != std::string::npos)
+			std::cout << ".0";
+		std::cout << std::endl;
 		return;
 	}
-
-
-
-
-
-
-
-
-
-
 }
 
-// for char conversion if first 1 or 3 numbers are ascii values, print the ascii value(42 = '*')
-// if it is already  char, print Non displayable
-// maybe hardcode nan etc
-//always check if it ends with f.
-//a number like 42.0f should still convert to '*'
+ScalarConverter::ScalarConverter() {std::cout << "this should never be called";}
