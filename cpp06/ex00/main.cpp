@@ -35,5 +35,7 @@ int main()
 	ScalarConverter::convert("-2");
 	ScalarConverter::convert("-900719925474099212342342342"); 
 	ScalarConverter::convert("-1167772161");
+	ScalarConverter::convert("1.17549e-38");
+	ScalarConverter::convert("");
 
 }
