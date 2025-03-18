@@ -16,12 +16,19 @@ Base * generate(void)
 
 void identify(Base* p)
 {
+	if (!p)
+	{
+		std::cout << "Null received, returning." <<  std::endl;
+		return;
+	}
 	if (dynamic_cast<A*>(p))
 		std::cout << "it's A!" <<std::endl;
 	else if (dynamic_cast<B*>(p))
 		std::cout << "it's B!" <<std::endl;
 	else if (dynamic_cast<C*>(p))
 		std::cout << "it's C!" <<std::endl;
+	else
+		std::cout << "unknown type. help." << std::endl;
 }
 
 void identify(Base& p)

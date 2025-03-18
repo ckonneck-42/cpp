@@ -7,9 +7,11 @@ int main()
 	A A_Class;
 	B B_Class;
 	C C_Class;
+	Base *nil = NULL;
 	A *A_Class_Pointer = &A_Class;
 	B *B_Class_Pointer = &B_Class;
 	C *C_Class_Pointer = new C();
+	identify(nil);
 	Base *bob = generate();
 	identify(*bob);
 	identify(bob);
