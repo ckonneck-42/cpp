@@ -78,7 +78,7 @@ void ScalarConverter::convert(const std::string &value)
 }
 
 ScalarConverter::ScalarConverter() {std::cout << "this should never be called";}
-
+ScalarConverter &ScalarConverter::operator=(const ScalarConverter &other) {(void) other; return *this;};
 
 
 //static_cast: The conversion is decided beforehand and is super fast when the program is running.

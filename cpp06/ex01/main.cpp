@@ -7,6 +7,7 @@ int main()
 	std::cout << bob <<std::endl;
 	Data *newdata = Serializer::deserialize(bob);
 
+
 	if(newdata == &ptr)
 	{
 		std::cout << "successful serilization" << std::endl;
@@ -26,9 +27,9 @@ Casting integers back to pointers
 Treating one type of data as another type
 
 Dangers of reinterpret_cast
-No type safety! You can cast anything to anything, even unrelated types.
+No type safety, you can cast anything to anything, even unrelated types.
 If used incorrectly, it can cause undefined behavior.
-Not portable! The size of pointers and integers can vary depending on the system.
+Not portable, The size of pointers and integers can vary depending on the system.
 Dereferencing an invalid pointer can crash your program.
 
 TLDR: reinterpret_cast just reinterprets the raw bits without any conversion.

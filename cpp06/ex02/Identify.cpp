@@ -13,6 +13,7 @@ Base * generate(void)
 
 	return(NULL);
 }
+
 void identify(Base* p)
 {
 	if (dynamic_cast<A*>(p))
@@ -22,6 +23,7 @@ void identify(Base* p)
 	else if (dynamic_cast<C*>(p))
 		std::cout << "it's C!" <<std::endl;
 }
+
 void identify(Base& p)
 {
 	try {

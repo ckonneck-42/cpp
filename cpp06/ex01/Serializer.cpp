@@ -1,4 +1,5 @@
 #include "Serializer.hpp"
+
 Serializer::Serializer() {std::cout << "never gonna give you up, never gonna let you down" << std::endl;}
 
 uintptr_t Serializer::serialize(Data* ptr)
@@ -9,3 +10,5 @@ Data* Serializer::deserialize(uintptr_t raw)
 {
 	return reinterpret_cast<Data*>(raw);
 }
+
+Serializer &Serializer::operator=(const Serializer &other) {(void) other; return *this;}
