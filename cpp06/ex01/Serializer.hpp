@@ -6,6 +6,8 @@
 struct Data
 {
 	int placeholder;
+	std::string name;
+	char b;
 };
 class Serializer 
 {
