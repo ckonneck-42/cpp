@@ -14,6 +14,9 @@ Base * generate(void)
 	return(NULL);
 }
 
+
+//pointer can return NULL
+//but adress referns to actual object, thus needs to be try'd
 void identify(Base* p)
 {
 	if (!p)
