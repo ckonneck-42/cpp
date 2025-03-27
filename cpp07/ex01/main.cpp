@@ -59,10 +59,7 @@ int main() {
 	std::cout << "Array elements after adding 1 to each char: " << std::endl;
 	iter(arrc, length, addone);
 	iter(arrc, length, printChars);
-	std::cout <<"\n__________________" << std::endl;
-
-
-	
+	std::cout <<"\n__________________" << std::endl;	
 	
 
     return 0;
