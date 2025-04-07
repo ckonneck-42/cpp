@@ -55,6 +55,8 @@ int main()
 	std::cout << "min= "<< ::min(a, b) << std::endl;
 	std::cout << "max= "<< ::max(a , b) << std::endl;
 	std::cout << "______________________________________________" << std::endl;
+	
+
 	void *temp1;
 	void *temp2;
 	std::cout << "tests with void*" << std::endl;
