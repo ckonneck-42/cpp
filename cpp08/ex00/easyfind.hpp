@@ -14,6 +14,9 @@ class numNotFound : public std::exception
     std::string _message;
 	
 	public:
+	numNotFound();
+	numNotFound(const numNotFound& other);
+	numNotFound& operator=(const numNotFound& other);
     numNotFound(int value, const std::string& containerType);
     virtual const char* what() const throw();
     virtual ~numNotFound() throw() {}

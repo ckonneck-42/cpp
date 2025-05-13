@@ -3,7 +3,17 @@
 #include <deque>
 #include <stdexcept>
 
+numNotFound::numNotFound() {}
 
+numNotFound::numNotFound(const numNotFound& other) {*this = other;}
+
+numNotFound &numNotFound::operator=(const numNotFound& other)
+{
+	if (this == &other)
+		return *this;
+	this->_message = other._message;
+	return *this;
+}
 
 numNotFound::numNotFound(int value, const std::string& containerType)
 {
