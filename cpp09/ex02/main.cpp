@@ -15,7 +15,7 @@ int main(int argc, char **argv)
 		if (isDigit(argv[i]))
 		{
             int number = std::atoi(argv[i]);
-            std::cout << "output: " << number << std::endl;
+            // std::cout << "output: " << number << std::endl;
             unsorted.push_back(number);
         } 
 		else
@@ -24,5 +24,7 @@ int main(int argc, char **argv)
 			return 1;
 		}
 	}
+	std::cout << "Before: ";
+	print(unsorted);
 	PmergeMe(unsorted);
 }
